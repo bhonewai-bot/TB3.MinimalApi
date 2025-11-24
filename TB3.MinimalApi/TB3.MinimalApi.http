@@ -1,0 +1,6 @@
+@TB3.MinimalApi_HostAddress = http://localhost:5268
+
+GET {{TB3.MinimalApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
