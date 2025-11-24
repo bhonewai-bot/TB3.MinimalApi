@@ -8,9 +8,9 @@ public static class ProductCategoryEndpoint
         {
             AppDbContext db = new AppDbContext();
             
-            List<ProductCategoryDto.ProductCategoryResponseDto> lts = db.TblProductCategories
+            List<ProductCategoryResponseDto> lts = db.TblProductCategories
                 .OrderByDescending(x => x.ProductCategoryId)
-                .Select(x => new ProductCategoryDto.ProductCategoryResponseDto()
+                .Select(x => new ProductCategoryResponseDto()
                 {
                     ProductCategoryId = x.ProductCategoryId,
                     ProductCategoryCode = x.ProductCategoryCode,
@@ -22,7 +22,7 @@ public static class ProductCategoryEndpoint
         })
         .WithTags("ProductCategory");
 
-        app.MapPost("/product-category", (ProductCategoryDto.ProductCategoryCreateRequestDto request) =>
+        app.MapPost("/product-category", (ProductCategoryCreateRequestDto request) =>
         {
             AppDbContext db = new AppDbContext();
             

@@ -10,7 +10,7 @@ public static class ProductEndpoint
             var lts = db.TblProducts
                 .AsNoTracking()
                 .OrderByDescending(x => x.ProductId)
-                .Select(x => new ProductDto.ProductResponseDto()
+                .Select(x => new ProductResponseDto()
                 {
                     ProductId = x.ProductId,
                     ProductCode = x.ProductCode,
@@ -33,7 +33,7 @@ public static class ProductEndpoint
 
             var product = db.TblProducts
                 .Where(x => x.DeleteFlag == false)
-                .Select(x => new ProductDto.ProductResponseDto()
+                .Select(x => new ProductResponseDto()
                 {
                     ProductId = x.ProductId,
                     ProductCode = x.ProductCode,
@@ -55,7 +55,7 @@ public static class ProductEndpoint
         })
         .WithTags("Product");
 
-        app.MapPost("/product", (ProductDto.ProductCreateRequestDto request) =>
+        app.MapPost("/product", (ProductCreateRequestDto request) =>
         {
             AppDbContext db = new AppDbContext();
             
@@ -83,7 +83,7 @@ public static class ProductEndpoint
         })
         .WithTags("Product");
 
-        app.MapPut("/product/{id}", (int id, ProductDto.ProductUpdateRequestDto request) =>
+        app.MapPut("/product/{id}", (int id, ProductUpdateRequestDto request) =>
         {
             AppDbContext db = new AppDbContext();
             
@@ -110,7 +110,7 @@ public static class ProductEndpoint
         })
         .WithTags("Product");
 
-        app.MapPatch("/product/{id}", (int id, ProductDto.ProductPatchRequestDto request) =>
+        app.MapPatch("/product/{id}", (int id, ProductPatchRequestDto request) =>
         {
             AppDbContext db = new AppDbContext();
             
